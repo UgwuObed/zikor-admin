@@ -2,7 +2,7 @@
 
 namespace App\Models;
 use App\Models\Food;
-use App\Models\Shoe;
+use App\Models\Shoes;
 use App\Models\Clothes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -63,7 +63,7 @@ class User extends Authenticatable
      */
     public function shoes()
     {
-        return $this->hasMany(Shoe::class);
+        return $this->hasMany(Shoes::class);
     }
 
     /**

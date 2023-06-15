@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClothesController;
+use App\Http\Controllers\ShoesController;
+use App\Http\Controllers\FoodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,5 +52,7 @@ Route::post('/profile', [ProfileController::class, 'update'])->name('profile.upd
 
 
 Route::resource('clothes', ClothesController::class);
+Route::resource('shoes', ShoesController::class);
+Route::resource('food', FoodController::class);
 
 

@@ -78,7 +78,7 @@ public function store(Request $request)
         'image_url3' => $imagePaths[2] ?? null,
         'user_id' => $user->id,
     ]);
-
+ 
     // Save the Clothes instance
     auth()->user()->clothes()->save($clothes);
 
