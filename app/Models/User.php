@@ -53,7 +53,7 @@ class User extends Authenticatable
     /**
      * Get the foods uploaded by the user.
      */
-    public function foods()
+    public function food()
     {
         return $this->hasMany(Food::class);
     }

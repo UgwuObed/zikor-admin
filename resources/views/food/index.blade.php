@@ -40,5 +40,5 @@
         </tbody>
     </table>
 
-    <a href="{{ route('food.create') }}">Add New Shoes</a>
+    <a href="{{ route('food.create') }}">Add New Food</a>
 @endsection

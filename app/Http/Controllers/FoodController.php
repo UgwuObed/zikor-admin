@@ -124,11 +124,8 @@ public function store(Request $request)
         $food->update([
             'name' => $validatedData['name'],
             'type' => $validatedData['type'],
-            'color' => $validatedData['color'],
-            'size' => $validatedData['size'],
+            'quantity' => $validatedData['quantity'],
             'category' => $validatedData['category'],
-            'gender' => $validatedData['gender'],
-            'brand' => $validatedData['brand'],
             'price' => $validatedData['price'],
             'description' => $validatedData['description'],
         ]);
