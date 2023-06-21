@@ -22,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/csrf-token', function () {
+    return response()->json(['csrfToken' => csrf_token()]);
+});
