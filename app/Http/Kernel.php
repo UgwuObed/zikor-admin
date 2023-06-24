@@ -44,6 +44,7 @@ protected $routeMiddleware = [
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
+
         ],
 
         'api' => [
@@ -51,6 +52,7 @@ protected $routeMiddleware = [
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
+            \Illuminate\Session\Middleware\StartSession::class,
         ],
     ];
 

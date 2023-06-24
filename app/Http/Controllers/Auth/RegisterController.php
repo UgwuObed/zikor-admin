@@ -33,9 +33,9 @@ class RegisterController extends Controller
 
         $user = $this->create($request->all());
 
-        // You can customize the logic after registration, such as redirecting to a dashboard or sending a confirmation email.
         
-        return redirect('/dashboard'); // Change '/dashboard' to your desired route after registration.
+        
+        return redirect('/dashboard'); 
     }
 
     /**
