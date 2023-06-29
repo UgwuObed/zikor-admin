@@ -21,7 +21,7 @@ use App\Http\Controllers\FoodController;
 |
 */
 
-Route::middleware('web')->group(function () {
+Route::group(['middleware' => ['web']], function () {
     Route::get('/', function () {
         return view('welcome');
     });
