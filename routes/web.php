@@ -21,7 +21,7 @@ use App\Http\Controllers\FoodController;
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web',]], function () {
     Route::get('/', function () {
         return view('welcome');
     });
@@ -38,13 +38,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
 
-    Route::get('/register', function () {
-        return view('auth.register');
-    })->name('register');
 
-    Route::get('/login', function () {
-        return view('auth.login');
-    })->name('login');
 
     // Dashboard route
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
