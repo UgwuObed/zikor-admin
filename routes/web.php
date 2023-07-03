@@ -45,6 +45,8 @@ Route::group(['middleware' => ['web',]], function () {
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::middleware('auth')->get('/profile/user', [ProfileController::class, 'getUserProfile']);
+
 
     Route::resource('clothes', ClothesController::class);
     Route::resource('shoes', ShoesController::class);

@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
-
-        public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Show the user's profile form.
      *
@@ -34,7 +34,11 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
-        $this->validator($request->all())->validate();
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $user->update([
             'business_name' => $request->input('business_name'),
@@ -61,5 +65,29 @@ class ProfileController extends Controller
             'state' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
         ]);
+    }
+
+    /**
+     * Retrieve the user's profile data.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getUserProfile(Request $request)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        $profileData = [
+            'business_name' => $user->business_name,
+            'country' => $user->country,
+            'state' => $user->state,
+            'city' => $user->city,
+        ];
+
+        return response()->json($profileData);
     }
 }
