@@ -17,5 +17,6 @@ class VerifyCsrfToken extends Middleware
          '/profile',
          '/profile/user',
          '/profile/update',
+         '/api/clothes',
     ];
 }

@@ -47,7 +47,7 @@ class ProfileController extends Controller
             'city' => $request->input('city'),
         ]);
 
-        // You can customize the logic after profile update, such as redirecting to a dashboard or showing a success message.
+    
         return redirect('/dashboard')->with('success', 'Profile updated successfully.');
     }
 

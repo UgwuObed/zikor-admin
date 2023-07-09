@@ -3,6 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ClothesController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ShoesController;
+use App\Http\Controllers\FoodController;
 
 
 /*
@@ -28,7 +34,13 @@ Route::middleware('api')->group(function () {
         return response()->json(['csrfToken' => csrf_token()]);
     });
 
-    
+        Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::middleware('auth')->get('/profile/user', [ProfileController::class, 'getUserProfile']);
+
+Route::post('/api/clothes', [ClothesController::class, 'store'])->name('clothes.store');
+Route::put('/api/clothes/{id}', [ClothesController::class, 'update'])->name('clothes.update');
+Route::delete('/api/clothes/{id}', [ClothesController::class, 'destroy'])->name('clothes.destroy');
 
 });
 

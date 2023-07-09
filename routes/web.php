@@ -44,7 +44,7 @@ Route::group(['middleware' => ['web',]], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
-    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::middleware('auth')->get('/profile/user', [ProfileController::class, 'getUserProfile']);
 
 
