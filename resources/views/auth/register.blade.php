@@ -1,163 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ asset('css/register.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Offside&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
+    <title>Zikor</title>
+    
+    
+    <script>
+       window.addEventListener('load', function () {
+            const registrationForm = document.getElementById('registrationForm');
+            const step1Section = document.getElementById('step1Section');
+            const step2Section = document.getElementById('step2Section');
+            const nextButtonStep1 = document.getElementById('nextButtonStep1');
+            const backButtonStep2 = document.getElementById('backButtonStep2');
 
-@extends('layouts.app')
+            nextButtonStep1.addEventListener('click', () => {
+                step1Section.style.display = 'none';
+                step2Section.style.display = 'block';
+            });
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+            backButtonStep2.addEventListener('click', () => {
+                step2Section.style.display = 'none';
+                step1Section.style.display = 'block';
+            });
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
-                            @csrf
+            registrationForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent form submission
 
-                            <div class="form-group row">
-                                <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
+                // Play the video for 30 seconds
+                const video = document.getElementById('logoVideo');
+                video.play();
 
-                                <div class="col-md-6">
-                                    <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
+                // Submit the form after 30 seconds
+                setTimeout(function () {
+                    registrationForm.submit();
+                }, 30000);
+            });
 
-                                    @error('first_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
+            // Play the video when the page is fully loaded
+            const video = document.getElementById('logoVideo');
+            video.play();
+        });
+    </script>
+</head>
+<body>
 
-                            <div class="form-group row">
-                                <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name">
-
-                                    @error('last_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="business_name" class="col-md-4 col-form-label text-md-right">{{ __('Business Name') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="business_name" type="text" class="form-control @error('business_name') is-invalid @enderror" name="business_name" value="{{ old('business_name') }}" required autocomplete="business_name">
-
-                                    @error('business_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
-
-                                    @error('phone')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="state" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="state" type="text" class="form-control @error('state') is-invalid @enderror" name="state" value="{{ old('state') }}" required autocomplete="state">
-
-                                    @error('state')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}" required autocomplete="country">
-
-                                    @error('country')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city">
-
-                                    @error('city')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+<div class="container">
+    <div class="formContainer">
+    
+        <form method="POST" action="{{ route('register') }}" class="form" id="registrationForm">
+            @csrf
+            <!-- Step 1 form fields here -->
+            <div id="step1Section">
+                <div class="logoPicture">
+                    <img src="{{ asset('images/zikor-logo.png') }}" alt="Logo" />
                 </div>
+                <p class="registration-link">Already have an account? <a href="{{ route('login') }}">Login</a></p>
+                <p class="signUp">Sign Up (Step 1)</p>
+                <label class="label">
+                    First Name:
+                    <input
+                        type="text"
+                        name="first_name"
+                        value="{{ old('first_name') }}"
+                        required
+                        class="inputField"
+                    />
+                </label>
+                <br />
+                <label class="label">
+                    Last Name:
+                    <input
+                        type="text"
+                        name="last_name"
+                        value="{{ old('last_name') }}"
+                        required
+                        class="inputField"
+                    />
+                </label>
+                <br />
+                <label class="label">
+                    Business Name:
+                    <input
+                        type="text"
+                        name="business_name"
+                        value="{{ old('business_name') }}"
+                        required
+                        class="inputField"
+                    />
+                </label>
+                <br />
+                <label class="label">
+                    Email:
+                    <input
+                        type="email"
+                        name="email"
+                        value="{{ old('email') }}"
+                        required
+                        class="inputField"
+                    />
+                </label>
+                <br />
+                <label class="label">
+                    Phone:
+                    <input
+                        type="tel"
+                        name="phone"
+                        value="{{ old('phone') }}"
+                        required
+                        class="inputField"
+                    />
+                </label>
+                <br />
+                <button type="button" id="nextButtonStep1" class="nextButton">Next</button>
             </div>
-        </div>
+
+            <!-- Step 2 form fields here -->
+            <div id="step2Section" style="display: none;">
+                <div class="logoPicture">
+                    <img src="{{ asset('images/zikor-logo.png') }}" alt="Logo" />
+                </div>
+                <p class="signUp">Sign Up (Step 2)</p>
+                      <button type="button" id="backButtonStep2" class="backButton">
+                    <i class="fas fa-arrow-left"></i>
+                  </button>
+
+                <label class="label">
+                    Country:
+                    <input
+                        type="text"
+                        name="country"
+                        value="{{ old('country') }}"
+                        required
+                        class="inputField"
+                    />
+                </label>
+                <br />
+                <label class="label">
+                    State:
+                    <input
+                        type="text"
+                        name="state"
+                        value="{{ old('state') }}"
+                        required
+                        class="inputField"
+                    />
+                </label>
+                <br />
+                <label class="label">
+                    City:
+                    <input
+                        type="text"
+                        name="city"
+                        value="{{ old('city') }}"
+                        required
+                        class="inputField"
+                    />
+                </label>
+                <br />
+                <label class="label">
+                    Password:
+                    <input
+                        type="password"
+                        name="password"
+                        required
+                        class="inputField"
+                    />
+                </label>
+                <br />
+                <label class="label">
+                    Confirm Password:
+                    <input
+                        type="password"
+                        name="password_confirmation"
+                        required
+                        class="inputField"
+                    />
+                </label>
+                <br />
+                @if ($errors->any())
+                    <div class="errorContainer">
+                        @foreach ($errors->all() as $error)
+                            <p class="errorMessage">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+                
+                <button type="submit" class="submitButton">Register</button>
+            </div>
+        </form>
     </div>
-@endsection
+</div>
+<video id="logoVideo" style="display: none;">
+        <source src="{{ asset('videos/logo.mp4') }}" type="video/mp4">
+    </video>
+</body>
+</html>

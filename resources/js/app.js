@@ -1,8 +1,8 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
+import RegisterForm from './components/RegisterForm.vue';
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+const app = createApp();
 
-const app = new Vue({
-    el: '#app',
-});
+app.component('register-form', RegisterForm);
 
+app.mount('#app');
