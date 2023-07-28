@@ -5,7 +5,7 @@ use App\Models\User;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ProfileController;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClothesController;
 use App\Http\Controllers\ShoesController;
@@ -47,15 +47,32 @@ Route::group(['middleware' => ['web',]], function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::middleware('auth')->get('/profile/user', [ProfileController::class, 'getUserProfile']);
-    
+
     Route::get('/products', function () {
         return view('products');
     })->name('products');
 
+
+
+    Route::get('/add-product', function () {
+        return view('add-product');
+    });
+    
+    Route::get('/add-product/{category}', function ($category) {
+        if ($category === 'clothes') {
+            return redirect()->route('clothes.create');
+        } elseif ($category === 'shoes') {
+            return redirect()->route('shoes.create');
+        } elseif ($category === 'food') {
+            return redirect()->route('food.create');
+        } else {
+            // Handle invalid category selection here (optional)
+            return redirect()->route('add-product')->with('error', 'Invalid category selection.');
+        }
+    });
+
+
     Route::resource('clothes', ClothesController::class);
     Route::resource('shoes', ShoesController::class);
     Route::resource('food', FoodController::class);
-
 });
-
-

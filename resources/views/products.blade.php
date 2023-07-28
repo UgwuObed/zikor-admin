@@ -12,219 +12,138 @@
     <title>Zikor</title>
 </head>
 <body>
-@extends('layouts.app') <!-- Assuming you have a base layout named 'app.blade.php' -->
-
-@section('content')
-<div class="product-container">
-  <!-- ... Your existing content here ... -->
+<div class="center">
+    <ul class="list-items">
+      <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+      <li class="active">
+        <a href="{{ route('products') }}">Products</a>
+      </li>
+      <li><a href="#">Order</a></li>
+      <li><a href="#">Completed</a></li>
+    </ul>
 </div>
 
-@if($showAddProduct)
-<div class="add-product-section">
-    <h2>Add Product</h2>
-    <div class="category-container">
-      <label for="category">Category:</label>
-      <select id="category" value="{{ $selectedCategory }}" onChange="handleCategoryChange(event)">
-        <option value="">Select an option</option>
-        <option value="cloths">Clothes</option>
-        <option value="food">Food</option>
-        <option value="shoes">Shoes</option>
-      </select>
-    </div>
-    @if($selectedCategory === 'cloths')
-    <div class="form-wrapper}">
-      <div class="form-field">
-        <label for="name">Name *</label>
-        <input
-          type="text"
-          id="name"
-          value="name"
-          onChange="handleInputChange(event)"
-          class="inputName"
-        />
-      </div>
-      <div class="form-field1">
-        <label for="type">Type *</label>
-        <input
-          type="text"
-          id="type"
-          value="type"
-          onChange="handleInputChange(event)"
-          class="inputType"
-        />
-      </div>
-      <div class="form-field">
-        <label for="brand">Brand *</label>
-        <input
-          type="text"
-          id="brand"
-          value="brand"
-          onChange="handleInputChange(event)"
-          class="inputBrand"
-        />
-      </div>
-      <div class="form-field2">
-        <label for="size">Size *</label>
-        <input
-          type="text"
-          id="size"
-          value="size"
-          onChange="handleInputChange(event)"
-          class="inputSize"
-        />
-      </div>
-      <div class="form-field3">
-        <label for="category">Gender *</label>
-        <select
-          id="category"
-          value="category"
-          onChange="handleInputChange(event)"
-          class="selectCategory"
-        >
-          <option value="">Select a gender category</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Unisex">Unisex</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label for="description">Description *</label>
-        <textarea
-          id="description"
-          value="{{ $formValues['description'] ?? '' }}"
-          onChange="handleInputChange(event)"
-          class="textareaDescription"
-        ></textarea>
-      </div>
-      <div class="form-field">
-        <label for="color">Color *</label>
-        <input
-          type="text"
-          id="color"
-          value="{{ $formValues['color'] ?? '' }}"
-          onChange="handleInputChange(event)"
-          class="inputColor"
-        />
-      </div>
-      <div class="form-field">
-        <label for="price">Price *</label>
-        <input
-          type="text"
-          id="price"
-          value="{{ $formValues['price'] ?? '' }}"
-          onChange="handleInputChange(event)"
-          class="inputPrice"
-        />
-      </div>
-      <div class="form-field">
-        <label for="image" class="dropContainer">
-          <span class="dropTitle">Drop files here</span>
-          or
-          <input
-            type="file"
-            id="image"
-            accept="image/*"
-            class="inputImage"
-            onChange="handleImageChange(event)"
-          />
-        </label>
-      </div>
-
-      <div>
-        <button type="button" onClick="handleUpload(event)" class="uploadButton">
-          Add
+<div class="search-container">
+        <input type="text" placeholder="Search products by name" class="search-input">
+        <button type="submit" class="search-button">
+            <span class="search-icon">&#128269;</span> Search
         </button>
-      </div>
     </div>
-    @elseif($selectedCategory === 'food')
-    <div>
-      <div>
-        <label for="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          value="{{ $formValues['name'] ?? '' }}"
-          onChange="handleInputChange(event)"
-        />
-      </div>
-      <!-- Add food specific form fields here -->
-      <!-- ... -->
-    </div>
-    @elseif($selectedCategory === 'shoes')
-    <div>
-      <div>
-        <label for="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          value="{{ $formValues['name'] ?? '' }}"
-          onChange="handleInputChange(event)"
-        />
-      </div>
-      <!-- Add shoes specific form fields here -->
-      <!-- ... -->
-    </div>
-    @else
-    <!-- For other categories, you can return null or any other content you need -->
-    @endif
-  </div>
+<!-- Inside your main page HTML -->
+<button onclick="showAddProductModal()">Add Product</button>
 
-  @if($isNotificationVisible)
-  <div class="notification show">
-    Product successfully added!
-  </div>
-  @endif
-  <div class="table-container">
-    <h2 class="table-title">Products</h2>
-    <table class="product-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Price</th>
-          <th>Category</th>
-          <td class="last-body">More</td>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Dummy table content -->
-        <tr>
-          <td>Product 1</td>
-          <td>Type 1</td>
-          <td>$10</td>
-          <td>Category 1</td>
-          <td class="last-body">
-            <a href="#">
-              <img src="{{ asset('more.png') }}" alt="More" width="20" height="8" onClick="handleMoreClick(0)">
-            </a>
-            @if($selectedRow === 0)
-            <div class="more-options">
-              <ul>
-                <li>
-                  <a href="#" class="edit">
-                    Edit
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="delete">
-                    Delete
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            @endif
-          </td>
-        </tr>
-        <!-- ... -->
-      </tbody>
-    </table>
+<!-- Add the modal container -->
+<div id="addProductModal" class="modal">
+  <div class="modal-content">
+    <h3>Select a category:</h3>
+    <button onclick="selectCategory('clothes')">Clothes</button>
+    <button onclick="selectCategory('shoes')">Shoes</button>
+    <button onclick="selectCategory('food')">Food</button>
   </div>
 </div>
-@endsection
-@endsection
-@section('scripts')
-  <script src="{{ mix('js/app.js') }}"></script> <!-- Update with the correct path to your compiled JavaScript file -->
-@endsection
+
+<input type="hidden" id="selectedCategory" value="">
+
+<script>
+  function showAddProductModal() {
+    // Show the modal with category options
+    const modal = document.getElementById('addProductModal');
+    modal.style.display = 'block';
+  }
+
+  function selectCategory(category) {
+    // Update the selected category value
+    document.getElementById('selectedCategory').value = category;
+
+    // Redirect the user to the appropriate category form page based on the selected category
+    window.location.href = `/add-product/${category}`;
+  }
+</script>
+
+
+
+
+<div class="table-container">
+  <h2 class="table-title">Products</h2>
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Category</th>
+        <td class="last-body">More</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Product 1</td>
+        <td>Type 1</td>
+        <td>$10</td>
+        <td>Category 1</td>
+        <td class="last-body">
+          <a href="#" onclick="handleMoreClick(0)">
+            <img src="/more.png" alt="More" width="20" height="8">
+          </a>
+          <div class="more-options" style="display: none;">
+            <ul>
+              <li>
+                <a href="#" class="edit">
+                  Edit
+                </a>
+              </li>
+              <li>
+                <a href="#" class="delete">
+                  Delete
+                </a>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Product 2</td>
+        <td>Type 2</td>
+        <td>$20</td>
+        <td>Category 2</td>
+        <td class="last-body">
+          <a href="#" onclick="handleMoreClick(1)">
+            <img src="/more.png" alt="More" width="20" height="8">
+          </a>
+          <div class="more-options" style="display: none;">
+            <ul>
+              <li>
+                <a href="#" class="edit">
+                  Edit
+                </a>
+              </li>
+              <li>
+                <a href="#" class="delete">
+                  Delete
+                </a>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <!-- ... -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  function handleMoreClick(rowIndex) {
+    var moreOptionsDivs = document.querySelectorAll('.more-options');
+    
+    moreOptionsDivs.forEach(function (div, index) {
+      if (index === rowIndex) {
+        div.style.display = div.style.display === 'none' ? 'block' : 'none';
+      } else {
+        div.style.display = 'none';
+      }
+    });
+  }
+</script>
+
 </body>
 </html>

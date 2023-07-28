@@ -1,528 +1,180 @@
-.product-container {
+body{
+  font-family: 'Offside', cursive;
+}
+  
+.center {
+  justify-content: center;
+  color: #000000;
+  margin-top: 103px;
+  margin-left: 89px;
+}
+
+.list-items {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.list-items li {
+  margin-right: 13rem; 
+}
+
+.list-items a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 18px;
+  font-weight: 1000;
+}
+
+.list-items li.active {
+  border: none;
+  background-color: #ffffff;
+  padding: 15px 32px;
+  text-align: center;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
+}
+
+.list-items li.active:hover {
+  background-color: #5e17eb;
+  color: #ffffff;
+}
+
+.list-items li.active:hover a {
+  color: #ffffff;
+}
+
+
+
+
+.search-container {
     display: flex;
+    margin-left: 890px;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-  }
-  
-  .logo-container {
-    position: relative;
-    margin-left: 150px;
-    z-index: 1;
-    top: 35px;
-  }
-  
-  .user-container {
-  
-    margin-left: 1rem;
-    margin-bottom: 35rem;
-  }
-  
-  .left-side {
-    background-color: #EEEEEE;
-    height: 40.90rem;
-    width: 21rem;
-    margin-top: -25px;
-    margin-left: -100px;
-  }
-  
-  .right-side {
-    position: relative;
-    color: #000000;
-  }
-  
-  .icons-container ul {
-    position: absolute;
-    top: 5rem;
-    align-items: center;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    font-size: 18px;
-  }
-  
-  .icons-container ul li {
-    margin-bottom: 4rem;
-  }
-  
-  .nav-text {
-    display: block;
-    margin-top: -27px;
-    margin-left: 27px;
-  }
-  
-  
-  .icons-container ul li:nth-last-child(-n+3) {
-    margin-bottom: 15rem;
-  }
-  
-  .icons-container ul li:nth-last-child(-n+2) {
-    margin-bottom: 2rem;
-  }
-  
-  .icons-container ul li a {
-    text-decoration: none;
-    color: #000000;
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .icons-container ul li a:hover {
-    text-decoration: none;
-    color: #5E17EB;
-    transform: scale(1.1);
-  }
-  
-  .center {
-    display: flex;
-    justify-content: center;
-    color: #000000;
-    margin-top: -433px;
-    margin-left: 39px;
-  
-  }
-  
-  .list-items {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .list-items li {
-    margin-right: 7rem;
-  }
-  
-  .list-items a {
-    text-decoration: none;
-    color: #000000;
-    font-size: 18px;
-    font-weight: 1000;
-  }
-  
-  .list-items li.active {
-    border: none;
-    background-color: #ffffff;
-    padding: 15px 32px;
-    text-align: center;
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5%;
-  
-  }
-  
-  .list-items li.active:hover {
-    background-color: #5E17EB;
-    color: #FFFFFF;
-  
-  }
-  
-  .list-items li.active:hover a {
-    color: #FFFFFF;
-  }
-  
-  .search-bar {
-    display: flex;
-    align-items: center;
-    margin-bottom: 260px;
-    width: 300px;
-    padding: 0.5rem;
-    border-radius: 5px;
-    height: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: -190px;
-  }
-  
-  .search-bar input {
-    flex-grow: 1;
-    border: none;
-    outline: none;
-    padding: 0.5rem;
-    font-size: 16px;
-  
-  }
-  
-  .search-bar button {
-    background-color: #5E17EB;
-    color: #FFFFFF;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 0.5rem;
-  
-  }
-  
-  .button-add {
-    display: flex;
-    position: absolute;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 1rem;
-  }
-  
-  .add-button {
-    background-color: #5E17EB;
-    color: #FFFFFF;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 290px;
-  }
-  
-  .table-container {
-    margin-top: 190px;
-  }
-  
-  .table-title {
-  
-    margin-left: -1000px;
-  }
-  
-  .product-table {
-    position: absolute;
-    width: 73%;
-    border-collapse: collapse;
-    margin-top: 0rem;
-    background-color: #ffffff;
-    margin-left: -1000px;
-    border: #FFFFFF;
-    border-radius: 5px;
-  }
-  
-  .product-table th {
-    background-color: #ffffff;
-    border-bottom: 1px solid black;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .product-table td {
-    padding: 1.7rem;
-    text-align: left;
-    border-bottom: 1px solid #000000;
-  }
-  
-  .product-table th {
-    background-color: #ffffff;
-  }
-  
-  .last-head {
-    font-size: 12px;
-  }
-  
-  .last-body {
-    font-size: 12px;
-  }
-  
-  .more-options {
-    background-color: white;
-    width: 60px;
-    height: 70px;
-    box-shadow: 0 4px 8px rgba(0, 2, 1, 0.4);
-    border-radius: 5px;
-    margin-left: 10px;
-    margin-top: 10px;
-  }
-  
-  .more-options ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .more-options li {
-    margin-bottom: 8px;
-    padding-top: 12px;
-  }
-  
-  .more-options a {
-    text-decoration: none;
-  }
-  
-  .more-options a.delete {
-    color: #FF0000;
-    font-weight: 800;
-    margin-left: 10px;
-  }
-  
-  .more-options a.edit {
-    color: #B9A600;
-    font-weight: 800;
-    margin-left: 18px;
-  }
-  
-  .add-product-section {
-    position: absolute;
-    background-color: #ffffff;
-    margin-top: 80px;
-    margin-left: 360px;
-    height: 140px;
-    font-size: 10px;
-    border-radius: 5px;
-  }
-  
-  .add-product-section h2 {
-    font-size: 15px;
-    margin-left: 18px;
-  }
-  
-  .category-container {
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-  }
-  
-  .category-container label {
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 24px;
-    margin-left: 35px;
-  }
-  
-  .category-container select {
-    appearance: none;
-    background-color: #ffffff;
-    border: 1px solid #5E17EB;
-    border-radius: 4px;
-    padding: 8px;
-    font-size: 15px;
-    width: 80%;
-    box-sizing: border-box;
-    cursor: pointer;
-    margin-left: 13px;
-  }
-  
-  .category-container select:focus {
-    outline: none;
-    border-color: #5E17EB;
-    box-shadow: 0 0 0 2px rgba(120, 49, 252, 0.2);
-  }
-  
-  .form-wrapper {
     background-color: #fff;
-    position: absolute;
-    top: -250px;
-    right: -640px;
-    width: 800px;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-field {
-    font-size: 20px;
-  }
-  
-  .form-field1 {
-    font-size: 20px;
-    margin-left: 420px;
-    margin-top: -39px;
-  }
-  
-  .form-field2 {
-    font-size: 20px;
-    margin-top: 39px;
-  }
-  
-  .form-field3 {
-    font-size: 20px;
-    margin-left: 420px;
-    margin-top: -39px;
-  }
-  
-  .form-field4 {
-    font-size: 20px;
-    margin-top: 39px;
-    margin-left: 420px;
-  }
-  
-  .form-field5 {
-    font-size: 20px;
-    margin-top: -39px;
-  }
-  
-  .inputName {
-    border: 1px solid #006197;
     border-radius: 5px;
-    height: 35px;
-    width: 300px;
-  }
-  
-  .inputType {
-    position: absolute;
-    border: 1px solid #006197;
-    border-radius: 5px;
-    height: 35px;
-    width: 300px;
-    
-  }
-  
-  .inputBrand {
-    border: 1px solid #006197;
-    border-radius: 5px;
-    height: 35px;
-    width: 300px;
-  }
-  
-  .inputSize{
-    border: 1px solid #006197;
-    border-radius: 5px;
-    height: 35px;
-    width: 300px;
-  }
-  
-  .selectCategory{
-    appearance: none;
-    background-color: #ffffff;
-    border: 1px solid #5E17EB;
-    border-radius: 4px;
-    padding: 8px;
-    font-size: 15px;
-    width: 20%;
-    box-sizing: border-box;
-    cursor: pointer;
-    margin-left: 13px;
-  }
-  
-  .textareaDescription{
-    border: 1px solid #006197;
-    border-radius: 5px;
-    height: 35px;
-    width: 243px;
-    padding-top: 50px;
-  }
-  
-  .uploadButton {
-    background-color: #5E17EB;
-    color: white;
+    padding: 5px 15px;
+    width: 340px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.search-input {
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 706px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .uploadButton:hover {
-    background-color: #7066ff;
-  }
-  
-  .uploadButton:active {
-    background-color: #5E17EB;
-  }
-  
-  .form-field8 {
-    margin-bottom: 20px;
-  }
-  
-  .form-field8 label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 20px;
-  }
-  
-  
-  .dropContainer {
-    position: relative;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    width: 200px;
-    padding: 20px;
-    margin-left: 550px;
-    margin-top: -170px;
-    border-radius: 10px;
-    border: 2px dashed #5E17EB;
-    color: #5E17EB;
-    cursor: pointer;
-    transition: background .2s ease-in-out, border .2s ease-in-out;
-  }
-  
-  .dropContainer:hover {
-    background: #eee;
-    border-color: #5E17EB;
-  }
-  
-  .dropContainer:hover .drop-title {
-    color: #5E17EB;
-  }
-  
-  .dropTitle {
-    color: #5E17EB;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    transition: color .2s ease-in-out;
-  }
-  
-  .inputImage {
-    width: 150px;
-    font-size: 12px;
-    max-width: 100%;
-    color: #444;
-    padding: 5px;
-    background: #fff;
-    border-radius: 10px;
-    border: 1px solid #555;
-  }
-  
-  .inputImage:hover {
-    background: #eee;
-  }
-  
-  .inputImage:focus {
     outline: none;
-    border-color: #084cdf;
-    box-shadow: 0 0 0 3px rgba(8, 76, 223, 0.3);
-  }
-  
-  .form-field6 {
-    font-size: 20px;
-    margin-top: 39px;
-  }
-  
-  .form-field7 {
-    font-size: 20px;
-    margin-top: 26px;
-  }
-  
-  .inputPrice{
-    border: 1px solid #006197;
-    border-radius: 5px;
-    height: 35px;
-    width: 300px;
-  }
-  
-  .inputColor{
-    border: 1px solid #006197;
-    border-radius: 5px;
-    height: 35px;
-    width: 300px;
-  }
-  
-  .notification {
-    background-color: green;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
     padding: 10px;
-    color: white;
-    text-align: center;
-    transition: opacity 0.5s ease;
-    opacity: 0;
-  }
-  
-  .notification.show {
-    opacity: 1;
-  }
-  
-  
-  
-  
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.search-button {
+    background-color: #5E17EB;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    
+    transition: background-color 0.2s ease-in-out;
+}
+
+.search-button:hover {
+    background-color: #9663fc;
+}
+
+.search-icon {
+    margin-right: 5px;
+}
+
+td, th {
+  text-align: center;
+}
+
+
+.product-table th {
+  background-color: #f2f2f2;
+  padding: 12px;
+  font-weight: bold;
+}
+
+
+.product-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+.more-options a {
+  color: blue;
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.more-options a:hover {
+  text-decoration: underline;
+}
+
+/* Style the "Edit" and "Delete" links inside the "More" options */
+.more-options .edit {
+  color: #dac403;
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
+}
+
+.more-options .delete{
+  color: #ff2020;
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
+}
+
+.more-options .edit:hover, .more-options .delete:hover {
+  background-color: #f2f2f2;
+}
+
+
+.notification {
+  background-color: #4CAF50;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+.notification.show {
+  display: block;
+}
+
+/* CSS styles for the modal container */
+.modal {
+  display: none; /* Hide the modal by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  width: 300px;
+  margin: 100px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Style the buttons inside the modal */
+.modal-content button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
