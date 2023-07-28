@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClothesController;
 use App\Http\Controllers\ShoesController;
@@ -46,7 +47,10 @@ Route::group(['middleware' => ['web',]], function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::middleware('auth')->get('/profile/user', [ProfileController::class, 'getUserProfile']);
-
+    
+    Route::get('/products', function () {
+        return view('products');
+    })->name('products');
 
     Route::resource('clothes', ClothesController::class);
     Route::resource('shoes', ShoesController::class);

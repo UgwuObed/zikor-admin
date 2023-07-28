@@ -31,14 +31,12 @@
       </div>
     </div>
   </div>
-  <div class="profilePage">
-    <a href="/profile">Profile</a>
-  </div>
+
   <div class="center">
     <ul class="list-items">
       <li class="active"><a href="#">Dashboard</a></li>
       <li>
-        <a href="/product">Products</a>
+        <a href="{{ route('products') }}">Products</a>
       </li>
       <li><a href="#">Order</a></li>
       <li><a href="#">Completed</a></li>
