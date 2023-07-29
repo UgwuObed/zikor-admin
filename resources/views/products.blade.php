@@ -11,7 +11,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <title>Zikor</title>
 </head>
+@extends('master')
+
+@section('content')
 <body>
+
 <div class="center">
     <ul class="list-items">
       <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
@@ -29,18 +33,24 @@
             <span class="search-icon">&#128269;</span> Search
         </button>
     </div>
-<!-- Inside your main page HTML -->
-<button onclick="showAddProductModal()">Add Product</button>
+
+    <button onclick="showAddProductModal()" class="button-1" role="button">
+  <i class="fas fa-plus"></i> Add Product
+  <span class="tooltip">Add new products</span>
+</button>
 
 <!-- Add the modal container -->
 <div id="addProductModal" class="modal">
+  
   <div class="modal-content">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
     <h3>Select a category:</h3>
     <button onclick="selectCategory('clothes')">Clothes</button>
     <button onclick="selectCategory('shoes')">Shoes</button>
     <button onclick="selectCategory('food')">Food</button>
   </div>
 </div>
+
 
 <input type="hidden" id="selectedCategory" value="">
 
@@ -58,17 +68,21 @@
     // Redirect the user to the appropriate category form page based on the selected category
     window.location.href = `/add-product/${category}`;
   }
+  function closeModal() {
+  const modal = document.getElementById('addProductModal');
+  modal.style.display = 'none';
+}
 </script>
 
 
 
-
+<h2 class="table-title">Products</h2>
 <div class="table-container">
-  <h2 class="table-title">Products</h2>
   <table class="product-table">
     <thead>
       <tr>
         <th>Name</th>
+        <th>Image</th>
         <th>Type</th>
         <th>Price</th>
         <th>Category</th>
@@ -78,72 +92,62 @@
     <tbody>
       <tr>
         <td>Product 1</td>
+        <td></td>
         <td>Type 1</td>
         <td>$10</td>
         <td>Category 1</td>
         <td class="last-body">
-          <a href="#" onclick="handleMoreClick(0)">
-            <img src="/more.png" alt="More" width="20" height="8">
-          </a>
-          <div class="more-options" style="display: none;">
-            <ul>
-              <li>
-                <a href="#" class="edit">
-                  Edit
-                </a>
-              </li>
-              <li>
-                <a href="#" class="delete">
-                  Delete
-                </a>
-              </li>
-            </ul>
-          </div>
-        </td>
+  <div class="more-options">
+    <div class="icon-container">
+      <a href="javascript:void(0)" class="edit" onclick="handleEditClick()">
+        <i class="fas fa-edit"></i> 
+      </a>
+      <a href="javascript:void(0)" class="delete" onclick="handleDeleteClick()">
+        <i class="fas fa-trash-alt"></i> 
+      </a>
+    </div>
+  </div>
+</td>
+
       </tr>
       <tr>
         <td>Product 2</td>
+        <td></td>
         <td>Type 2</td>
         <td>$20</td>
         <td>Category 2</td>
         <td class="last-body">
-          <a href="#" onclick="handleMoreClick(1)">
-            <img src="/more.png" alt="More" width="20" height="8">
-          </a>
-          <div class="more-options" style="display: none;">
-            <ul>
-              <li>
-                <a href="#" class="edit">
-                  Edit
-                </a>
-              </li>
-              <li>
-                <a href="#" class="delete">
-                  Delete
-                </a>
-              </li>
-            </ul>
-          </div>
-        </td>
-      </tr>
+  <div class="more-options">
+    <div class="icon-container">
+      <a href="javascript:void(0)" class="edit" onclick="handleEditClick()">
+        <i class="fas fa-edit"></i> 
+      </a>
+      <a href="javascript:void(0)" class="delete" onclick="handleDeleteClick()">
+        <i class="fas fa-trash-alt"></i> 
+      </a>
+    </div>
+  </div>
+</td>
+
       <!-- ... -->
     </tbody>
   </table>
 </div>
 
 <script>
-  function handleMoreClick(rowIndex) {
-    var moreOptionsDivs = document.querySelectorAll('.more-options');
-    
-    moreOptionsDivs.forEach(function (div, index) {
-      if (index === rowIndex) {
-        div.style.display = div.style.display === 'none' ? 'block' : 'none';
-      } else {
-        div.style.display = 'none';
-      }
-    });
+  function handleEditClick() {
+    // Add your logic for handling the edit click here
+    // For example, you can show an edit modal or redirect to an edit page
+    console.log("Edit clicked");
+  }
+
+  function handleDeleteClick() {
+    // Add your logic for handling the delete click here
+    // For example, you can show a confirmation dialog and delete the item on confirmation
+    console.log("Delete clicked");
   }
 </script>
 
 </body>
+@endsection
 </html>

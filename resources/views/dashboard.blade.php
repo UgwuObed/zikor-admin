@@ -13,6 +13,10 @@
     <title>Zikor</title>
     
 </head>
+
+@extends('master')
+
+@section('content')
 <body>
 	<div class="dashboard-container">
   <div class="gray-background">
@@ -89,4 +93,5 @@
 </div>
 
 </body>
+@endsection
 </html>

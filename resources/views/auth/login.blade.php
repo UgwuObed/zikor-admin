@@ -13,12 +13,15 @@
     <title>Zikor</title>
     
 </head>
+@extends('master')
+
+@section('content')
 <body>
 
 <div class="container">
     <div class="formContainer">
     
-        <form method="POST" action="{{ route('login') }}" class="form" id="registrationForm">
+        <form method="POST" action="{{ route('login') }}" class="form" id="loginForm">
             @csrf
             <!-- Step 1 form fields here -->
             <div id="step1Section">
@@ -59,13 +62,24 @@
                     </div>
                 @endif
                 
-                <button type="submit" class="submitButton">Login</button>
+                <button type="submit" class="submitButton" id="loginButton">Login</button>
             </div>
         </form>
     </div>
 </div>
-<video id="logoVideo" style="display: none;">
-        <source src="{{ asset('videos/logo.mp4') }}" type="video/mp4">
-    </video>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        
+        $('#loginForm').on('submit', function() {
+           
+            $('#loadingSpinner').show();
+        });
+
+
+        $('#loginButton').on('click', function() {
+            $('#loadingSpinner').hide();
+        });
+    </script>
 </body>
+@endsection
 </html>
