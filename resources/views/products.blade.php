@@ -97,14 +97,14 @@
     @foreach ($clothes as $clothing)
       <tr>
         <td>{{ $clothing->name }}</td>
-        <td><img src="{{ asset('storage/' . $clothes->image_url1) }}" alt="Image 1"></td>
+        <td><img src="{{ asset('storage/' . $clothing->image_url1) }}" alt="Image 1"></td>
         <td>{{ $clothing->type }}</td>
         <td>{{ $clothing->price }}</td>
-        <td>{{ $clothing->category }}/td>
+        <td>{{ $clothing->category }}</td>
         <td class="last-body">
   <div class="more-options">
   <div class="icon-container">
-          <a href="javascript:void(0)" class="edit" onclick="handleEditClick('{{ route('clothes.edit', $clothes->id) }}')">
+          <a href="javascript:void(0)" class="edit" onclick="handleEditClick('{{ route('clothes.edit', $clothing->id) }}')">
           <i class="fas fa-edit"></i> 
       </a>
       <div class="icon-container">
@@ -125,10 +125,10 @@
       @foreach ($food as $foodItem)
       <tr>
         <td>{{ $foodItem->name }}</td>
-        <td> <img src="{{ asset('storage/' . $food->image_url1) }}" alt="Image 1"></td>
+        <td> <img src="{{ asset('storage/' . $foodItem->image_url1) }}" alt="Image 1"></td>
         <td>{{ $foodItem->type }}</td>
         <td>{{ $foodItem->price }}</td>
-        <td>{{ $foodItem->quantity }}</td>
+        <td>{{ $foodItem->category }}</td>
         <td class="last-body">
   <div class="more-options">
     <div class="icon-container">
@@ -151,7 +151,7 @@
       @foreach ($shoes as $shoe)
       <tr>
         <td>{{ $shoe->name }}</td>
-        <td><img src="{{ asset('storage/' . $shoes->image_url1) }}" alt="Image 1"></td>
+        <td><img src="{{ asset('storage/' . $shoe->image_url1) }}" alt="Image 1"></td>
         <td>{{ $shoe->type }}</td>
         <td>{{ $shoe->price }}</td>
         <td>{{ $shoe->category }}</td>
@@ -176,6 +176,19 @@
       <!-- ... -->
     </tbody>
   </table>
+</div>
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeConfirmationModal()">&times;</span>
+        <h3>Confirm Deletion</h3>
+        <p>Are you sure you want to delete this product?</p>
+        <div class="modal-buttons">
+            <!-- Use custom styles for the "Yes" and "No" buttons -->
+            <button class="no-button" onclick="closeConfirmationModal()">Cancel</button>
+            <button class="yes-button" onclick="handleDeleteConfirm()">Delete</button>
+            
+        </div>
+    </div>
 </div>
 
 <script>
@@ -212,6 +225,42 @@
             deleteForm.submit();
         }
     </script>
+    <!-- ... Your existing HTML code ... -->
+
+    <script>
+    let deleteUrl; // Variable to store the delete URL
+
+    function handleDeleteClick(url) {
+        // Set the deleteUrl variable to the clicked URL
+        deleteUrl = url;
+
+        // Show the confirmation modal
+        const confirmationModal = document.getElementById('confirmationModal');
+        confirmationModal.style.display = 'block';
+    }
+
+    function handleDeleteConfirm() {
+        // Hide the confirmation modal
+        const confirmationModal = document.getElementById('confirmationModal');
+        confirmationModal.style.display = 'none';
+
+        // Proceed with the delete action
+        const deleteForm = document.getElementById('deleteForm');
+        deleteForm.action = deleteUrl;
+        deleteForm.submit();
+    }
+
+    function closeConfirmationModal() {
+        // Hide the confirmation modal without proceeding with the delete action
+        const confirmationModal = document.getElementById('confirmationModal');
+        confirmationModal.style.display = 'none';
+    }
+</script>
+
+
+
+<!-- ... Your existing HTML code ... -->
+
 
 </body>
 

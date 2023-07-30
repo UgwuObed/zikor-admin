@@ -83,7 +83,7 @@ class ClothesController extends Controller
         auth()->user()->clothes()->save($clothes);
 
         // Redirect to the index page or show a success message
-        return redirect()->route('clothes.index')->with('success', 'Clothes added successfully.');
+        return redirect()->route('products')->with('success', 'Clothes added successfully.');
     }
 
 
@@ -167,7 +167,7 @@ class ClothesController extends Controller
         }
 
         // Redirect to the index page or show a success message
-        return redirect()->route('clothes.index')->with('success', 'Clothes updated successfully.');
+        return redirect()->route('products')->with('success', 'Clothes updated successfully.');
     }
 
     /**
@@ -190,6 +190,6 @@ class ClothesController extends Controller
         $clothes->delete();
 
         // Redirect to the index page or show a success message
-        return redirect()->route('clothes.index')->with('success', 'Clothes deleted successfully.');
+        return redirect()->route('products')->with('success', 'Clothes deleted successfully.');
     }
 }

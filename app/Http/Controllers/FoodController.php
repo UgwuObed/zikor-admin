@@ -77,7 +77,7 @@ public function store(Request $request)
     auth()->user()->food()->save($food);
 
     // Redirect to the index page or show a success message
-    return redirect()->route('food.index')->with('success', 'food added successfully.');
+    return redirect()->route('products')->with('success', 'food added successfully.');
 }
 
 
@@ -154,7 +154,7 @@ public function store(Request $request)
         }
 
         // Redirect to the index page or show a success message
-        return redirect()->route('food.index')->with('success', 'food updated successfully.');
+        return redirect()->route('products')->with('success', 'food updated successfully.');
     }
 
     /**
@@ -177,6 +177,6 @@ public function store(Request $request)
         $food->delete();
 
         // Redirect to the index page or show a success message
-        return redirect()->route('food.index')->with('success', 'food deleted successfully.');
+        return redirect()->route('products')->with('success', 'food deleted successfully.');
     }
 }

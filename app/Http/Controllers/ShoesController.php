@@ -83,7 +83,7 @@ public function store(Request $request)
     auth()->user()->shoes()->save($shoes);
 
     // Redirect to the index page or show a success message
-    return redirect()->route('shoes.index')->with('success', 'Shoes added successfully.');
+    return redirect()->route('products')->with('success', 'Shoes added successfully.');
 }
 
 
@@ -166,7 +166,7 @@ public function store(Request $request)
         }
 
         // Redirect to the index page or show a success message
-        return redirect()->route('shoes.index')->with('success', 'Shoes updated successfully.');
+        return redirect()->route('products')->with('success', 'Shoes updated successfully.');
     }
 
     /**
@@ -175,7 +175,7 @@ public function store(Request $request)
     public function destroy($id)
     {
         // Find the shoes instance
-        $shoes = auth()->user()->clothes()->findOrFail($id);
+        $shoes = auth()->user()->shoes()->findOrFail($id);
 
         // Delete the image files associated with the Shoes instance if they exist
         $imageUrls = [$shoes->image_url1, $shoes->image_url2, $shoes->image_url3];
@@ -189,6 +189,6 @@ public function store(Request $request)
         $shoes->delete();
 
         // Redirect to the index page or show a success message
-        return redirect()->route('shoes.index')->with('success', 'Shoes deleted successfully.');
+        return redirect()->route('products')->with('success', 'Shoes deleted successfully.');
     }
 }
