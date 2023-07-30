@@ -7,8 +7,7 @@ use App\Http\Controllers\ClothesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ShoesController;
-use App\Http\Controllers\FoodController;
+
 
 
 /*

@@ -77,6 +77,9 @@
 
 
 <h2 class="table-title">Products</h2>
+
+
+
 <div class="table-container">
   <table class="product-table">
     <thead>
@@ -90,44 +93,85 @@
       </tr>
     </thead>
     <tbody>
+      @if ($clothes->count() > 0)
+    @foreach ($clothes as $clothing)
       <tr>
-        <td>Product 1</td>
-        <td></td>
-        <td>Type 1</td>
-        <td>$10</td>
-        <td>Category 1</td>
+        <td>{{ $clothing->name }}</td>
+        <td><img src="{{ asset('storage/' . $clothes->image_url1) }}" alt="Image 1"></td>
+        <td>{{ $clothing->type }}</td>
+        <td>{{ $clothing->price }}</td>
+        <td>{{ $clothing->category }}/td>
         <td class="last-body">
   <div class="more-options">
-    <div class="icon-container">
-      <a href="javascript:void(0)" class="edit" onclick="handleEditClick()">
-        <i class="fas fa-edit"></i> 
+  <div class="icon-container">
+          <a href="javascript:void(0)" class="edit" onclick="handleEditClick('{{ route('clothes.edit', $clothes->id) }}')">
+          <i class="fas fa-edit"></i> 
       </a>
-      <a href="javascript:void(0)" class="delete" onclick="handleDeleteClick()">
-        <i class="fas fa-trash-alt"></i> 
+      <div class="icon-container">
+                            <!-- Pass the delete route to the handleDeleteClick function -->
+       <a href="javascript:void(0)" class="delete" onclick="handleDeleteClick('{{ route('clothes.destroy', $clothing->id) }}')">
+       <i class="fas fa-trash-alt"></i>
       </a>
     </div>
   </div>
 </td>
-
       </tr>
+
+      @endforeach
+      @endif
+
+
+@if ($food->count() > 0)
+      @foreach ($food as $foodItem)
       <tr>
-        <td>Product 2</td>
-        <td></td>
-        <td>Type 2</td>
-        <td>$20</td>
-        <td>Category 2</td>
+        <td>{{ $foodItem->name }}</td>
+        <td> <img src="{{ asset('storage/' . $food->image_url1) }}" alt="Image 1"></td>
+        <td>{{ $foodItem->type }}</td>
+        <td>{{ $foodItem->price }}</td>
+        <td>{{ $foodItem->quantity }}</td>
         <td class="last-body">
   <div class="more-options">
     <div class="icon-container">
-      <a href="javascript:void(0)" class="edit" onclick="handleEditClick()">
-        <i class="fas fa-edit"></i> 
+          <a href="javascript:void(0)" class="edit" onclick="handleEditClick('{{ route('food.edit', $foodItem->id) }}')">
+          <i class="fas fa-edit"></i> 
       </a>
-      <a href="javascript:void(0)" class="delete" onclick="handleDeleteClick()">
-        <i class="fas fa-trash-alt"></i> 
+      <div class="icon-container">
+                            <!-- Pass the delete route to the handleDeleteClick function -->
+       <a href="javascript:void(0)" class="delete" onclick="handleDeleteClick('{{ route('food.destroy', $foodItem->id) }}')">
+       <i class="fas fa-trash-alt"></i>
       </a>
     </div>
   </div>
 </td>
+      </tr>
+      @endforeach
+      @endif
+
+      @if ($shoes->count() > 0)
+      @foreach ($shoes as $shoe)
+      <tr>
+        <td>{{ $shoe->name }}</td>
+        <td><img src="{{ asset('storage/' . $shoes->image_url1) }}" alt="Image 1"></td>
+        <td>{{ $shoe->type }}</td>
+        <td>{{ $shoe->price }}</td>
+        <td>{{ $shoe->category }}</td>
+        <td class="last-body">
+  <div class="more-options">
+    <div class="icon-container">
+          <a href="javascript:void(0)" class="edit" onclick="handleEditClick('{{ route('shoes.edit', $shoe->id) }}')">
+          <i class="fas fa-edit"></i> 
+      </a>
+      <div class="icon-container">
+                            <!-- Pass the delete route to the handleDeleteClick function -->
+       <a href="javascript:void(0)" class="delete" onclick="handleDeleteClick('{{ route('shoes.destroy', $shoe->id) }}')">
+       <i class="fas fa-trash-alt"></i>
+      </a>
+    </div>
+  </div>
+</td>
+      </tr>
+      @endforeach
+      @endif
 
       <!-- ... -->
     </tbody>
@@ -147,7 +191,29 @@
     console.log("Delete clicked");
   }
 </script>
+<script>
+        function handleEditClick(editUrl) {
+            // Navigate to the edit URL
+            window.location.href = editUrl;
+        }
+    </script>
+<form id="deleteForm" action="" method="POST">
+        @csrf
+        @method('DELETE')
+    </form>
+
+    <script>
+        function handleDeleteClick(deleteUrl) {
+            // Set the action attribute of the delete form to the delete URL
+            const deleteForm = document.getElementById('deleteForm');
+            deleteForm.action = deleteUrl;
+
+            // Submit the delete form
+            deleteForm.submit();
+        }
+    </script>
 
 </body>
+
 @endsection
 </html>

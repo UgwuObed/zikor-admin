@@ -43,6 +43,7 @@ Route::group(['middleware' => ['web',]], function () {
 
     // Dashboard route
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
@@ -70,6 +71,10 @@ Route::group(['middleware' => ['web',]], function () {
             return redirect()->route('add-product')->with('error', 'Invalid category selection.');
         }
     });
+
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/products', [ProductController::class, 'index'])->name('products');
+
 
 
     Route::resource('clothes', ClothesController::class);

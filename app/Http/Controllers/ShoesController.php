@@ -96,6 +96,8 @@ public function store(Request $request)
         return view('shoes.show', compact('shoes'));
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      */

@@ -96,6 +96,9 @@ class ClothesController extends Controller
         return view('clothes.show', compact('clothes'));
     }
 
+
+    
+
     /**
      * Show the form for editing the specified resource.
      */

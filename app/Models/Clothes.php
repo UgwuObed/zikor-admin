@@ -9,8 +9,7 @@ class Clothes extends Model
 {
     use HasFactory;
 
-        protected $fillable = [
-
+    protected $fillable = [
         'name',
         'type',
         'color',
@@ -24,4 +23,11 @@ class Clothes extends Model
         'image_url2',
         'image_url3',
     ];
+
+    // Define the relationship with the User model
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
+

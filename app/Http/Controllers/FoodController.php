@@ -90,6 +90,8 @@ public function store(Request $request)
         return view('food.show', compact('food'));
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      */
