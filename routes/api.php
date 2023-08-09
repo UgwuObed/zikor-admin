@@ -33,13 +33,11 @@ Route::middleware('api')->group(function () {
         return response()->json(['csrfToken' => csrf_token()]);
     });
 
-        Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
-    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-    Route::middleware('auth')->get('/profile/user', [ProfileController::class, 'getUserProfile']);
+       Route::get('/api/images/{userId}/{imageName}', 'ClothesController@getImage');
 
-Route::post('/api/clothes', [ClothesController::class, 'store'])->name('clothes.store');
-Route::put('/api/clothes/{id}', [ClothesController::class, 'update'])->name('clothes.update');
-Route::delete('/api/clothes/{id}', [ClothesController::class, 'destroy'])->name('clothes.destroy');
+
+
+
 
 });
 

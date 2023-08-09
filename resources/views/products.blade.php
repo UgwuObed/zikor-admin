@@ -97,7 +97,7 @@
     @foreach ($clothes as $clothing)
       <tr>
         <td>{{ $clothing->name }}</td>
-        <td><img src="{{ asset('storage/' . $clothing->image_url1) }}" alt="Image 1"></td>
+        <td><img src="{{ asset('storage/' . $clothing->image_url1) }}" alt="Image 1" class="img-fluid"></td>
         <td>{{ $clothing->type }}</td>
         <td>{{ $clothing->price }}</td>
         <td>{{ $clothing->category }}</td>
@@ -125,7 +125,7 @@
       @foreach ($food as $foodItem)
       <tr>
         <td>{{ $foodItem->name }}</td>
-        <td> <img src="{{ asset('storage/' . $foodItem->image_url1) }}" alt="Image 1"></td>
+        <td> <img src="{{ asset('storage/food/' . $foodItem->image_url1) }}" alt="Image 1"></td>
         <td>{{ $foodItem->type }}</td>
         <td>{{ $foodItem->price }}</td>
         <td>{{ $foodItem->category }}</td>
@@ -151,7 +151,7 @@
       @foreach ($shoes as $shoe)
       <tr>
         <td>{{ $shoe->name }}</td>
-        <td><img src="{{ asset('storage/' . $shoe->image_url1) }}" alt="Image 1"></td>
+        <td><img src="{{ asset('storage/shoes' . $shoe->image_url1) }}" alt="Image 1"></td>
         <td>{{ $shoe->type }}</td>
         <td>{{ $shoe->price }}</td>
         <td>{{ $shoe->category }}</td>

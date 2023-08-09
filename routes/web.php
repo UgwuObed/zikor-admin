@@ -75,6 +75,7 @@ Route::group(['middleware' => ['web',]], function () {
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     Route::get('/products', [ProductController::class, 'index'])->name('products');
 
+Route::get('/api/images/{userId}/{imageName}', 'ClothesController@getImage');
 
 
     Route::resource('clothes', ClothesController::class);
