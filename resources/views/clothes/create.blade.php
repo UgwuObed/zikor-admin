@@ -66,7 +66,7 @@
         <option value="women fashon">Women Fashon</option>
         <option value="trending style">Trending Style</option>
     </select>
-
+    <h3>Add Images</h3>
     <div class="form-group">
                     <label for="image_url1">Image 1</label>
                     <div class="file-drop" id="file-drop">
