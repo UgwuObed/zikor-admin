@@ -50,9 +50,9 @@
      
     <label for="category">Category</label>
         <select name="category" required>
-        <option value="men fashon">International</option>
-        <option value="women fashon">National</option>
-        <option value="trending style">Local</option>
+        <option value="international">International</option>
+        <option value="national">National</option>
+        <option value="local">Local</option>
     </select>
        <h3>Add Images</h3>
     <div class="form-group">

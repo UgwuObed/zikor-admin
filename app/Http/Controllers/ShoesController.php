@@ -185,10 +185,10 @@ public function store(Request $request)
             }
         }
 
-        // Delete the shoes instance
+        
         $shoes->delete();
 
-        // Redirect to the index page or show a success message
+       
         return redirect()->route('products')->with('success', 'Shoes deleted successfully.');
     }
 }

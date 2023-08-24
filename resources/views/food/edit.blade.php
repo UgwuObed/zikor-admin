@@ -17,7 +17,7 @@
 <body>
 <div class="overlay">
         <div class="container">
-    <h1>Edit Food</h1>
+    <h1>Edit Item</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
