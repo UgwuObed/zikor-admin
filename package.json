@@ -10,7 +10,9 @@
     "dev": "mix",
     "watch": "mix watch",
     "hot": "mix --hot",
-    "prod": "mix --production"
+    "prod": "mix --production",
+    "build": "vite build",
+    "production": "vite build --mode production"
   },
   "devDependencies": {
     "axios": "^0.21.1",
@@ -22,6 +24,7 @@
     "vue-template-compiler": "^2.7.14"
   },
   "dependencies": {
+    "vite": "^4.4.9",
     "vue": "^3.2.36",
     "vue-router": "^4.2.4"
   },
