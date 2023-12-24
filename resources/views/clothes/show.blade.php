@@ -14,14 +14,15 @@
 
 <!-- Display the images if they exist -->
 @if ($clothes->image_url1)
-<img src="{{ asset('storage/' . $clothes->image_url1) }}" alt="Image 1">
+    <img src="{{ asset('storage/clothes' . $clothes->image_url1) }}" alt="Image 1">
 @endif
 @if ($clothes->image_url2)
-<img src="{{ asset('storage/' . $clothes->image_url2) }}" alt="Image 2">
+    <img src="{{ asset('storage/' . $clothes->image_url2) }}" alt="Image 2">
 @endif
 @if ($clothes->image_url3)
-<img src="{{ asset('storage/' . $clothes->image_url3) }}" alt="Image 3">
+    <img src="{{ asset('storage/' . $clothes->image_url3) }}" alt="Image 3">
 @endif
+
 
 <a href="{{ route('clothes.edit', $clothes->id) }}">Edit</a>
 @endsection

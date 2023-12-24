@@ -49,14 +49,10 @@ class ClothesController extends Controller
 
         // Handle the image uploads if provided
         $imagePaths = [];
-        if ($request->hasFile('image_url1')) {
-            $imagePaths[] = $request->file('image_url1')->store('clothes');
-        }
-        if ($request->hasFile('image_url2')) {
-            $imagePaths[] = $request->file('image_url2')->store('clothes');
-        }
-        if ($request->hasFile('image_url3')) {
-            $imagePaths[] = $request->file('image_url3')->store('clothes');
+        foreach (['image_url1', 'image_url2', 'image_url3'] as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $imagePaths[] = $request->file($fieldName)->store('clothes');
+            }
         }
 
         // Get the authenticated user
